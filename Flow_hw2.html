@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  .green {
+    fill:green;
+    stroke:black;
+    stroke-width:4px;
+  }
+  .purple {
+    stroke:purple;
+    stroke-width:2px;
+  }
+  </style>
+</head>
+<body>
+<h2>Family Tree</h2>
+<script>
+var Com=[[120,70],[340,70],[80,220],[270,270],[330,330]];
+</script>
+<svg width="800" height="400" id="Recs"></svg>
+<script>
+	var mainSVG = document.getElementById("Recs");
+  for(i=0; i<5; i++){
+  	var recNode = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    recNode.setAttribute("x", Com[i][0]);
+    recNode.setAttribute("y", Com[i][1]);
+    recNode.setAttribute("rx", 40);
+    recNode.setAttribute("ry", 10);
+    recNode.setAttribute("width", 50);
+    recNode.setAttribute("height",50);
+    recNode.setAttribute("class", "green");
+    recNode.setAttribute("title", "green");
+    mainSVG.appendChild(recNode);
+    }
+    for(i=0; i<4; i++){
+  	var lineNode = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    for(j=1; j<5-i; j++){
+    lineNode.setAttribute("x1", Com[i][0]+25);
+    lineNode.setAttribute("x2", Com[i+j][0]+25);
+    lineNode.setAttribute("y1", Com[i][1]+50);
+    lineNode.setAttribute("y2", Com[i+j][0]+25);
+    lineNode.setAttribute("class", "purple");
+    lineNode.setAttribute("title", "purple");
+    mainSVG.appendChild(lineNode);
+    }
+  }
+</script>
+<h4>This visualization is a simple family tree that connects 4 people to 1 person.</h4>
+</body>
+</html>
