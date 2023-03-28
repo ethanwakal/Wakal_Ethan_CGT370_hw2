@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  .red {
+    fill:red;
+  }
+  .black {
+    stroke:black;
+    stroke-width:2px;
+  }
+  </style>
+</head>
+<body>
+<h2>How many hours I spend on my phone a week based on age</h2>
+<script>
+var cc=[[60,390],[90,310],[130,400],[170,390],[240,360],[310,350],[330,350],[410,320],[470,230,],[510,150]];
+var r= [4,4,4,4,4,4,4,4,4,4], csl=['red black'];
+</script>
+<svg width="800" height="600" id="circles">
+  <line x1="50" y1="50" x2="50" y2="400" style="stroke:black; stroke-width:2;"/>
+  <line x1="50" y1="400" x2="550" y2="400" style="stroke:black; stroke-width:2;"/>
+  <text x="30" y="40">Time</text>
+  <text x="300" y="450">Age</text>
+  <text x="10" y="100">9h</text>
+  <text x="10" y="200">6h</text>
+  <text x="10" y="300">3h</text>
+  <text x="10" y="400">0h</text>
+  <text x="50" y="420">0</text>
+  <text x="200" y="420">7</text>
+  <text x="350" y="420">14</text>
+  <text x="500" y="420">21</text>
+</svg>
+<script>
+	var mainSVG = document.getElementById("circles");
+  for(i=0; i<10; i++){
+  	var circleNode = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circleNode.setAttribute("cx", cc[i][0]);
+    circleNode.setAttribute("cy", cc[i][0]);
+    circleNode.setAttribute("r", r[i]);
+    circleNode.setAttribute("class", csl[0]);
+    circleNode.setAttribute("title", csl[0]);
+    mainSVG.appendChild(circleNode);
+  }
+</script>
+<h4>This visualization is a scatterplot of how many hours that I spend on my phone as day as I get older each year.</h4>
+</body>
+</html>
