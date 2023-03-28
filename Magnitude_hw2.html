@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  .red {
+    fill:green;
+  }
+  .blue {
+    fill:blue;
+  }
+  </style>
+</head>
+<body>
+<h2>US Smartphone Marketshare 2021</h2>
+<script>
+var revenue= [['Q1 2021', 55, 45],['Q2 2021',53, 47],['Q3 2021',47, 53],['Q4 2021',56, 44]];
+</script>
+<svg width="900" height="600" id="Recs">
+  <line x1="50" y1="500" x2="900" y2="500" style="stroke:black; stroke-width:2;"/>
+</svg>
+
+<script>
+	var mainSVG = document.getElementById("Recs");
+  
+  for(i=0; i<4; i++){
+  	var recNode = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    recNode.setAttribute("x", 70+(i*220));
+    recNode.setAttribute("y", 499-(revenue[i][1]*5));
+    recNode.setAttribute("width", 50);
+    recNode.setAttribute("height", revenue[i][1]*5);
+    recNode.setAttribute("class", "blue");
+    recNode.setAttribute("title", "blue");
+    mainSVG.appendChild(recNode);
+    
+    var recNode1 = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    recNode1.setAttribute("x", 150+(i*220));
+    recNode1.setAttribute("y", 499-(revenue[i][2]*5));
+    recNode1.setAttribute("width", 50);
+    recNode1.setAttribute("height", revenue[i][2]*5);
+    recNode1.setAttribute("class", "red");
+    recNode1.setAttribute("title", "red");
+    mainSVG.appendChild(recNode1);
+    
+    var data =document.createTextNode(revenue[i][0])
+    var text =document.createElementNS("http://www.w3.org/2000/svg", "text")
+    text.setAttributeNS(null, "x", 115 + (i*220));
+    text.setAttributeNS(null, "y", 520);
+    text.setAttributeNS(null, "font-size", 15);
+    text.setAttributeNS(null, "font-weight", 600);
+    text.appendChild(data);
+    mainSVG.appendChild(text);
+    
+    var data1 =document.createTextNode(revenue[i][1])
+    var text1 =document.createElementNS("http://www.w3.org/2000/svg", "text")
+    text1.setAttributeNS(null, "x", 75 + (i*220));
+    text1.setAttributeNS(null, "y", 490 -(revenue[i][1]*5));
+    text1.setAttributeNS(null, "font-size", 20);
+    text1.setAttributeNS(null, "font-weight", 400);
+    text1.appendChild(data1);
+    mainSVG.appendChild(text1);
+    
+    var data2 =document.createTextNode(revenue[i][2])
+    var text2 =document.createElementNS("http://www.w3.org/2000/svg", "text")
+    text2.setAttributeNS(null, "x", 160 + (i*220));
+    text2.setAttributeNS(null, "y", 490 -(revenue[i][2]*5));
+    text2.setAttributeNS(null, "font-size", 20);
+    text2.setAttributeNS(null, "font-weight", 400);
+    text2.appendChild(data2);
+    mainSVG.appendChild(text2);
+    }
+</script>
+<h4>This visualization shows how many people in the US use Apple phones (Blue) compared to Android phones (Red). It is split up into four quarters. The numbers are percentages.   </h4>
+</body>
+</html>
