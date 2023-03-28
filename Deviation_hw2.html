@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  .red {
+    fill:red;
+  }
+  .blue {
+    fill:blue;
+  }
+  .green {
+    fill:green;
+  }
+  .purple {
+    fill:purple;
+  }
+  </style>
+</head>
+<body>
+<h2>Purdue's Top Dining Court Ratings by Students</h2>
+<script>
+var SVscore=[20,40,30,10];
+var SSscore=[10,20,30,40];
+var SMscore=[30,30,25,15];
+var XYscore=[40,30,20,10];
+var scores=[SVscore, SSscore, SMscore, XYscore];
+var Recy=[50,150, 250,350];
+var csl=['purple','green','blue','red'];
+</script>
+<svg width="800" height="450" id="Recs">
+  <line x1="350" y1="40" x2="350" y2="400" style="stroke:black; stroke-width:2;"/>
+  <text x="10" y="80">Earhart</text>
+  <text x="10" y="180">Ford</text>
+  <text x="10" y="280">Wiley</text>
+  <text x="10" y="380">Windsor</text>
+  <text x="220" y="40" fill="red">5 or lower</text>
+  <text x="310" y="40" fill="blue">6-7</text>
+  <text x="380" y="40" fill="green">8-9</text>
+  <text x="450" y="40" fill="purple">10</text>
+</svg>
+
+<script>
+	var mainSVG = document.getElementById("Recs");
+  for(i=0; i<4; i++){
+  	var width= [scores[i][0]*2, scores[i][1]*2, scores[i][2]*2, scores[i][3]*2];
+  for(j=0; j<4; j++) {
+  	var recNode = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    var Recx = [351+width[j+1], 351, 349-width[j], 349-width[j-1]-width[j]];
+    recNode.setAttribute("x", Recx[j]);
+    recNode.setAttribute("y", Recy[i]);
+    recNode.setAttribute("width", width[j]);
+    recNode.setAttribute("height", 50);
+    recNode.setAttribute("class", csl[j]);
+    recNode.setAttribute("title",csl[j]);
+    mainSVG.appendChild(recNode);
+    }
+  }
+</script>
+<h4>This visualization is Purdue's top rated dining courts. This data was from a survey where students were asked to rate them out of ten.</h4>
+</body>
+</html>
