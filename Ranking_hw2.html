@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  .blue {
+    fill:blue;
+  }
+  </style>
+</head>
+<body>
+<h2>NBA leaders in 3pt percentage</h2>
+<script>
+var percentage=[['Clippers', 37.8], ['Celtics', 37.8], ['Suns', 37.8], ['76ers', 38.4], ['Warriors', 38.6], ['Nets', 39.2], ['Nuggets', 39.2]];
+</script>
+<svg width="800" height="480" id="Recs">
+  <line x1="50" y1="50" x2="50" y2="400" style="stroke:black; stroke-width:2;"/>
+  <line x1="50" y1="400" x2="550" y2="400" style="stroke:black; stroke-width:2;"/>
+  <text x="20" y="40">Percent</text>
+  <text x="300" y="450">Team</text>
+  <text x="10" y="100">90%</text>
+  <text x="10" y="200">60%</text>
+  <text x="10" y="300">30%</text>
+  <text x="10" y="400">0%</text>
+</svg>
+<script>
+	var mainSVG = document.getElementById("Recs");
+  
+  for(i=0; i<7; i++){
+  	var recNode = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    recNode.setAttribute("x", 100 + (i*60));
+    recNode.setAttribute("y", 399 - (3.55 * percentage[i][1]));
+    recNode.setAttribute("width", 40);
+    recNode.setAttribute("height",  3.55 * percentage[i][1]);
+    recNode.setAttribute("class", "blue");
+    recNode.setAttribute("title", "blue");
+    mainSVG.appendChild(recNode);
+    
+    var data =document.createTextNode(percentage[i][0])
+    var text =document.createElementNS("http://www.w3.org/2000/svg", "text")
+    text.setAttributeNS(null, "x", 105 + (i*60));
+    text.setAttributeNS(null, "y", 420);
+    text.setAttributeNS(null, "font-size", 15);
+    text.setAttributeNS(null, "font-weight", 600);
+    text.appendChild(data);
+    mainSVG.appendChild(text);
+    
+    var data1 =document.createTextNode(percentage[i][1])
+    var text1 =document.createElementNS("http://www.w3.org/2000/svg", "text")
+    text1.setAttributeNS(null, "x", 110 + (i*60));
+    text1.setAttributeNS(null, "y", 390 - (3.55 * percentage[i][1]));
+    text1.setAttributeNS(null, "font-size", 15);
+    text1.setAttributeNS(null, "font-weight", 600);
+    text1.appendChild(data1);
+    mainSVG.appendChild(text1);
+  }
+</script>
+<h4>The visualization shows the NBA's top 3pt percentage teams in the league this year. </h4>
+</body>
+</html>
